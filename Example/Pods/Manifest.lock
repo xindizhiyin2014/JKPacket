@@ -1,0 +1,27 @@
+PODS:
+  - JKPacket (0.1.0):
+    - RxSwift (~> 5.0.0)
+  - RxSwift (5.0.1)
+  - SnapKit (5.0.1)
+
+DEPENDENCIES:
+  - JKPacket (from `../`)
+  - SnapKit (~> 5.0.0)
+
+SPEC REPOS:
+  trunk:
+    - RxSwift
+    - SnapKit
+
+EXTERNAL SOURCES:
+  JKPacket:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  JKPacket: e8b371f041ed2ad3de861fb8f479ac4fcb837033
+  RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+
+PODFILE CHECKSUM: 35d65102e196efa9c9b537eae150ba7ced5222dd
+
+COCOAPODS: 1.11.3

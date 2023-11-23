@@ -14,6 +14,9 @@
 		0406D4C22AE22322005ED17E /* JKObserveLifeCycleDataViewController4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0406D4C12AE22322005ED17E /* JKObserveLifeCycleDataViewController4.swift */; };
 		0406D4C42AE22FA3005ED17E /* JKObserveLifeCycleDataViewController5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0406D4C32AE22FA3005ED17E /* JKObserveLifeCycleDataViewController5.swift */; };
 		0406D4C62AE231F1005ED17E /* JKTestLifeCycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0406D4C52AE231F1005ED17E /* JKTestLifeCycleView.swift */; };
+		044CCD5D2B0755EB00A1221C /* JKObserveLifeCycleDataViewController6.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CCD5C2B0755EB00A1221C /* JKObserveLifeCycleDataViewController6.swift */; };
+		044CCD5F2B07563B00A1221C /* JKObserveLifeCycleDataViewController7.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CCD5E2B07563B00A1221C /* JKObserveLifeCycleDataViewController7.swift */; };
+		044CCD772B0E039C00A1221C /* JKLifecycleViewController8.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044CCD762B0E039C00A1221C /* JKLifecycleViewController8.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -42,6 +45,9 @@
 		0406D4C12AE22322005ED17E /* JKObserveLifeCycleDataViewController4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JKObserveLifeCycleDataViewController4.swift; sourceTree = "<group>"; };
 		0406D4C32AE22FA3005ED17E /* JKObserveLifeCycleDataViewController5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JKObserveLifeCycleDataViewController5.swift; sourceTree = "<group>"; };
 		0406D4C52AE231F1005ED17E /* JKTestLifeCycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JKTestLifeCycleView.swift; sourceTree = "<group>"; };
+		044CCD5C2B0755EB00A1221C /* JKObserveLifeCycleDataViewController6.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JKObserveLifeCycleDataViewController6.swift; sourceTree = "<group>"; };
+		044CCD5E2B07563B00A1221C /* JKObserveLifeCycleDataViewController7.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JKObserveLifeCycleDataViewController7.swift; sourceTree = "<group>"; };
+		044CCD762B0E039C00A1221C /* JKLifecycleViewController8.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JKLifecycleViewController8.swift; sourceTree = "<group>"; };
 		14B69D07BB2A268C22AAB91C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		4273844BB554D157F655CDD0 /* Pods-JKPacket_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JKPacket_Tests.release.xcconfig"; path = "Target Support Files/Pods-JKPacket_Tests/Pods-JKPacket_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		53F20F791607E047C057718C /* Pods_JKPacket_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JKPacket_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,6 +121,9 @@
 				0406D4BF2AE21EE4005ED17E /* JKObserveLifeCycleDataViewController3.swift */,
 				0406D4C12AE22322005ED17E /* JKObserveLifeCycleDataViewController4.swift */,
 				0406D4C32AE22FA3005ED17E /* JKObserveLifeCycleDataViewController5.swift */,
+				044CCD5C2B0755EB00A1221C /* JKObserveLifeCycleDataViewController6.swift */,
+				044CCD5E2B07563B00A1221C /* JKObserveLifeCycleDataViewController7.swift */,
+				044CCD762B0E039C00A1221C /* JKLifecycleViewController8.swift */,
 				0406D4C52AE231F1005ED17E /* JKTestLifeCycleView.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
@@ -362,7 +371,10 @@
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				0406D4C22AE22322005ED17E /* JKObserveLifeCycleDataViewController4.swift in Sources */,
 				0406D4B42ADFE1CA005ED17E /* JKObserveLifeCycleDataViewController1.swift in Sources */,
+				044CCD772B0E039C00A1221C /* JKLifecycleViewController8.swift in Sources */,
+				044CCD5D2B0755EB00A1221C /* JKObserveLifeCycleDataViewController6.swift in Sources */,
 				0406D4C02AE21EE4005ED17E /* JKObserveLifeCycleDataViewController3.swift in Sources */,
+				044CCD5F2B07563B00A1221C /* JKObserveLifeCycleDataViewController7.swift in Sources */,
 				0406D4C42AE22FA3005ED17E /* JKObserveLifeCycleDataViewController5.swift in Sources */,
 				0406D4C62AE231F1005ED17E /* JKTestLifeCycleView.swift in Sources */,
 			);

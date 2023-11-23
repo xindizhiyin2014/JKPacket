@@ -33,7 +33,7 @@ private var datas = [String]()
     
     private func initDatas()
     {
-        datas = ["observe lifecycle data", "observe lifecycle data with rxswift", "observe lifecycle data on mainthread", "observe lifecycle data with buffer", "lifecycleView"]
+        datas = ["observe lifecycle data", "observe lifecycle data with rxswift", "observe lifecycle data on mainthread", "observe lifecycle data with buffer", "lifecycleView","liveArray","liveDictionary","progressLifecycle"]
         tableView.reloadData()
     }
 
@@ -70,6 +70,15 @@ private var datas = [String]()
              self.navigationController?.pushViewController(vc, animated: true)
          } else if indexPath.row == 4 {
              let vc = JKObserveLifeCycleDataViewController5()
+             self.navigationController?.pushViewController(vc, animated: true)
+         } else if indexPath.row == 5 {
+             let vc = JKObserveLifeCycleDataViewController6()
+             self.navigationController?.pushViewController(vc, animated: true)
+         } else if indexPath.row == 6 {
+             let vc = JKObserveLifeCycleDataViewController7()
+             self.navigationController?.pushViewController(vc, animated: true)
+         } else if indexPath.row == 7 {
+             let vc = JKLifecycleViewController8()
              self.navigationController?.pushViewController(vc, animated: true)
          }
          

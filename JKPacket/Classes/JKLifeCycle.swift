@@ -66,3 +66,16 @@ internal func getState(with event:JKLifecycle.Event, currentState:JKLifecycle.St
    }
    
 }
+
+
+public extension JKLifecycle {
+    
+    func addObserve(_ observer: any JKLifecycleObserver = JKDefaultLifecycleObserver(),
+                    stateChange:@escaping ((_ source: JKLifecycleOwner, _ event: JKLifecycle.Event) -> Void)) -> any JKLifecycleObserver {
+        var currentObserver = observer
+        currentObserver.stateChangedBlock = stateChange
+        self.addObserver(currentObserver)
+        return currentObserver
+    }
+}
+

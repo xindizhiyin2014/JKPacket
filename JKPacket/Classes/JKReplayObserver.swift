@@ -21,7 +21,7 @@ public class JKReplayObserver<V>:JKObserver {
     init(bufferSize: UInt = 1) {
         self.bufferSize = bufferSize
     }
-    public func onChanged(t: V?) {
+    public func onChanged(t: V?, extra:Any?) {
         defer {
             liveDataLock.unlock()
         }
@@ -57,7 +57,7 @@ public class JKReplayObserver<V>:JKObserver {
         }.disposed(by: disposeBag)
     }
     
-    public func markHasPendingData(_ t:T?) {
+    public func markHasPendingData(_ t:T?, extra:Any? = nil) {
         guard bufferSize  > 0 else {
             mPendingDatas.append(t)
             return

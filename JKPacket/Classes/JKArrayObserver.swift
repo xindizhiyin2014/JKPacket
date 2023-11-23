@@ -1,34 +1,30 @@
 //
-//  JKDefaultObserver.swift
+//  JKArrayObserver.swift
 //  JKPacket
 //
-//  Created by jack on 2023/10/10.
+//  Created by jack on 2023/11/10.
 //
 
 import Foundation
 import RxSwift
 
-public class JKDefaultObserver<T>:JKObserver {
-   
+public class JKArrayObserver<T>: JKObserver {
     public var uniqueId: UUID = UUID()
     
     let disposeBag = DisposeBag()
     
-    let publishSubject = PublishSubject<T?>()
+    let publishSubject = PublishSubject<(list: T?, change: JKArrayPartialChange?)>()
     
     private var hasPendingData = false
-   
-    public func onChanged(t: T?, extra:Any?) {
-        publishSubject.onNext(t)
+    public func onChanged(t: T?, extra:Any? = JKArrayPartialChange(type: .assign, indexs: nil)) {
+        publishSubject.onNext((t, extra as? JKArrayPartialChange))
     }
     
     
-    func observe(onSubject:((_ subject:Observable<T?>)->Observable<T?>)? = nil, block: @escaping ((_ value:T?)->Void)) {
+    func observe(onSubject:((_ subject:Observable<(list: T?, change: JKArrayPartialChange?)>)->Observable<(list: T?, change: JKArrayPartialChange?)>)? = nil, block: @escaping ((_ value:(list: T?, change: JKArrayPartialChange?))->Void)) {
         publishSubject.handleOnSubject(subject: publishSubject, onSubject: onSubject).subscribe { e in
             if let element = e.element {
                 block(element)
-            } else {
-               block(nil)
             }
         }.disposed(by: disposeBag)
     }
@@ -43,13 +39,11 @@ public class JKDefaultObserver<T>:JKObserver {
     public func isHavePendingData() -> Bool {
         return hasPendingData
     }
-    
 }
 
-
-extension JKDefaultObserver:Hashable {
+extension JKArrayObserver:Hashable {
     
-    public static func == (lhs: JKDefaultObserver<T>, rhs: JKDefaultObserver<T>) -> Bool {
+    public static func == (lhs: JKArrayObserver<T>, rhs: JKArrayObserver<T>) -> Bool {
         lhs.hashValue == rhs.hashValue
     }
     
@@ -62,14 +56,14 @@ extension JKDefaultObserver:Hashable {
      }
 }
 
-
 private extension PublishSubject {
-    func handleOnSubject<T>(subject:Observable<T>,
-                         onSubject:((_ subject:Observable<T>)->Observable<T>)?) -> Observable<T> {
+    func handleOnSubject<T>(subject:Observable<(list: T?, change: JKArrayPartialChange?)>,
+                            onSubject:((_ subject:Observable<(list: T?, change: JKArrayPartialChange?)>)->Observable<(list: T?, change: JKArrayPartialChange?)>)?) -> Observable<(list: T?, change: JKArrayPartialChange?)> {
         if onSubject != nil {
             return onSubject!(subject)
         }
         return subject
     }
 }
+
 

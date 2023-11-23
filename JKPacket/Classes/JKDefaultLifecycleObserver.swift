@@ -11,8 +11,13 @@ public class JKDefaultLifecycleObserver:JKLifecycleObserver
 {
     public var uniqueId: UUID = UUID()
     
-    typealias StateChangedBlock = (_ source: JKLifecycleOwner, _ event: JKLifecycle.Event) -> Void
-    var stateChangedBlock:StateChangedBlock?
+    public typealias StateChangedBlock = (_ source: JKLifecycleOwner, _ event: JKLifecycle.Event) -> Void
+    
+    public var stateChangedBlock:StateChangedBlock?
+    
+    public init() {
+        
+    }
     
     public func onStateChanged(source: JKLifecycleOwner, event: JKLifecycle.Event) {
         guard event != .ON_ANY else {

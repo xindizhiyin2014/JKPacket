@@ -10,7 +10,6 @@ import Foundation
 open class JKLifeCycleView:UIView,JKLifecycleOwner {
  
     var mLifecycleRegistry:JKLifecycleRegistry?
-    private var lifecycleObserver:JKDefaultLifecycleObserver?
     public override init(frame: CGRect) {
         super.init(frame: frame)
         initLifecycle()
@@ -43,23 +42,19 @@ open class JKLifeCycleView:UIView,JKLifecycleOwner {
     
     deinit {
         mLifecycleRegistry?.handleLifecycleEvent(event: .ON_DESTROY)
-        if let observer = lifecycleObserver {
-            mLifecycleRegistry?.removeObserver(observer)
-        }
+        
     }
     
 
     private func initLifecycle() {
         mLifecycleRegistry = JKLifecycleRegistry(provider: self)
-        let observer:JKDefaultLifecycleObserver = JKDefaultLifecycleObserver()
-        observer.stateChangedBlock = {(source:JKLifecycleOwner,event:JKLifecycle.Event) in
+        let lifecycle:JKLifecycle = getLifecycle()
+        let _ = lifecycle.addObserve { [weak self] source, event in
             if event == .ON_STOP {
-//                取消第一响应者，不再响应输入时间
-                self.resignFirstResponder()
+//                取消第一响应者，不再响应输入事件
+                self?.resignFirstResponder()
             }
         }
-        mLifecycleRegistry!.addObserver(observer)
-        lifecycleObserver = observer
     }
     
 //    MARK:  - - JKLifecycleOwner - -

@@ -12,10 +12,9 @@ public protocol JKObserver:Hashable{
     var uniqueId:UUID { get }
     
     /// called when the data changed
-    func onChanged(t:T?)
+    func onChanged(t:T?, extra:Any?)
     
-    
-    func markHasPendingData(_ t:T?)
+    func markHasPendingData(_ t:T?, extra:Any?)
     
     func markHasNoPendingData()
     

@@ -14,14 +14,12 @@ open class JKLifeCycleViewController:UIViewController,JKLifecycleOwner
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         mLifecycleRegistry = JKLifecycleRegistry(provider: self)
         let lifecycle:JKLifecycle = getLifecycle()
-        let observer:JKDefaultLifecycleObserver = JKDefaultLifecycleObserver()
-        observer.stateChangedBlock = {(source:JKLifecycleOwner,event:JKLifecycle.Event) in
+        let _ = lifecycle.addObserve {[weak self] source, event in
             if event == .ON_STOP {
 //                取消第一响应者，不再响应输入事件
-                self.resignFirstResponder()
+                self?.resignFirstResponder()
             }
         }
-        lifecycle.addObserver(observer)
         mLifecycleRegistry?.handleLifecycleEvent(event: .ON_CREATE)
     }
     

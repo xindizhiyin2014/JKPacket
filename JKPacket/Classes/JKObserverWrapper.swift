@@ -52,8 +52,8 @@ public class JKObserverWrapper<U:JKObserver>:Hashable {
 }
 
 public class JKLifecycleBoundObserver<U:JKObserver>:JKObserverWrapper<U>,JKLifecycleObserver {
-    typealias StateChangedBlock = (_ source: JKLifecycleOwner, _ event: JKLifecycle.Event) -> Void
-    var stateChangedBlock:StateChangedBlock?
+    public typealias StateChangedBlock = (_ source: JKLifecycleOwner, _ event: JKLifecycle.Event) -> Void
+    public var stateChangedBlock:StateChangedBlock?
     
     private weak var mOwner:JKLifecycleOwner?
     
@@ -104,7 +104,7 @@ public class JKLifecycleBoundObserver<U:JKObserver>:JKObserverWrapper<U>,JKLifec
         }
         if mActive == true {
             if mObserver.isHavePendingData() == true {
-                liveData.dispatchingValue(wrapper: self)
+                liveData.dispatchingValue(wrapper: self, extra: liveData.getExtra())
                 mObserver.markHasNoPendingData()
             }
             

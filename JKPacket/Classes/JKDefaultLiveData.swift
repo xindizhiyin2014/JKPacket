@@ -56,7 +56,7 @@ final public class JKDefaultLiveData<T>:JKLiveData<JKDefaultObserver<T>> {
     /// - Parameters:
     ///   - observer: forever observer
     ///   - onSubject: rxswit block with paramter of Observable
-    ///   - block: he block which need the developer to handle things
+    ///   - block: the block which need the developer to handle things
     /// - Returns: the observer in use, the developer need to hold it,when they need remov it
     public func observeForeverOnMainThread(observer:JKDefaultObserver<T>, onSubject:((_ subject:Observable<T?>)->Observable<T?>)? = nil, block: @escaping ((_ value:T?)->Void)) -> JKDefaultObserver<T> {
          

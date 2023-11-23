@@ -17,15 +17,10 @@ public class JKLiveData<U:JKObserver> {
     private var mDispatchingValue = false
     private var mDispatchInvalidated = false
     private var mData:U.T?
+    private var mExtra:Any?
     public var value:U.T? {
         set {
-            defer {
-                liveDataLock.unlock()
-            }
-            liveDataLock.lock()
-            mVersion += 1
-            mData = newValue
-            dispatchingValue(wrapper: nil)
+            invokeChange(newValue: newValue, extra: nil)
         }
         get {
             return mData
@@ -34,16 +29,28 @@ public class JKLiveData<U:JKObserver> {
     public init() {
         
     }
-    private func considerNotify(observer:JKObserverWrapper<U>) {
+    
+    internal func invokeChange(newValue:U.T?, extra:Any?) {
+        defer {
+            liveDataLock.unlock()
+        }
+        liveDataLock.lock()
+        mVersion += 1
+        mData = newValue
+        mExtra = extra
+        dispatchingValue(wrapper: nil, extra: extra)
+    }
+    
+    private func considerNotify(observer:JKObserverWrapper<U>, extra:Any? = nil) {
         
         guard observer.mActive == true else {
-            observer.mObserver.markHasPendingData(mData)
+            observer.mObserver.markHasPendingData(mData, extra: extra)
             return
         }
         
         guard observer.shouldBeActive == true else {
             observer.activeStateChanged(active:false, liveData: self)
-            observer.mObserver.markHasPendingData(mData)
+            observer.mObserver.markHasPendingData(mData, extra: extra)
             return
         }
         
@@ -52,10 +59,10 @@ public class JKLiveData<U:JKObserver> {
         }
         
         observer.mLastVersion = mVersion
-        observer.mObserver.onChanged(t: mData)
+        observer.mObserver.onChanged(t: mData, extra: extra)
     }
     
-    func dispatchingValue(wrapper:JKObserverWrapper<U>?) {
+    func dispatchingValue(wrapper:JKObserverWrapper<U>?, extra:Any? = nil) {
         defer {
             liveDataLock.unlock()
         }
@@ -68,10 +75,10 @@ public class JKLiveData<U:JKObserver> {
         repeat {
             mDispatchInvalidated = false
             if wrapper != nil {
-                considerNotify(observer: wrapper!)
+                considerNotify(observer: wrapper!, extra: extra)
             } else {
                 for (_,wrapper) in mObservers {
-                    considerNotify(observer: wrapper)
+                    considerNotify(observer: wrapper, extra: extra)
                     if mDispatchInvalidated == true {
                         break
                     }
@@ -107,7 +114,7 @@ public class JKLiveData<U:JKObserver> {
             let active = JKLifecycleBoundObserver<U>.isActiveState(state: state)
              wrapper.activeStateChanged(active:active, liveData: self)
         }
-       let isActive = JKLifecycleBoundObserver<U>.isActiveState(state: owner.getLifecycle().getCurrentState())
+        let isActive = JKLifecycleBoundObserver<U>.isActiveState(state: owner.getLifecycle().getCurrentState())
         wrapper.mActive = isActive
         owner.getLifecycle().addObserver(wrapper)
     }
@@ -166,6 +173,10 @@ public class JKLiveData<U:JKObserver> {
     
     func hasObservers() -> Bool {
         return mObservers.count > 0
+    }
+    
+    internal func getExtra() ->Any? {
+        return mExtra
     }
     
     

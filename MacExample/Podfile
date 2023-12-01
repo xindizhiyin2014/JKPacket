@@ -1,0 +1,17 @@
+source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+
+platform :osx, '10.11'
+
+target 'MacExample' do
+  pod 'JKPacket', :path => '../'
+  pod 'SnapKit'
+
+
+  #target 'JKPacket_Tests' do
+   # inherit! :search_paths
+
+    #pod 'Quick', '~> 2.2.0'
+    #pod 'Nimble', '~> 8.0.7'
+  #end
+end

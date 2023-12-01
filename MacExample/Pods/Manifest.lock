@@ -1,0 +1,34 @@
+PODS:
+  - JKPacket (0.2.0):
+    - JKPacket/Core (= 0.2.0)
+    - JKPacket/iOS (= 0.2.0)
+    - JKPacket/OSX (= 0.2.0)
+    - RxSwift (~> 5.0.0)
+  - JKPacket/Core (0.2.0):
+    - RxSwift (~> 5.0.0)
+  - JKPacket/OSX (0.2.0):
+    - RxSwift (~> 5.0.0)
+  - RxSwift (5.0.1)
+  - SnapKit (5.6.0)
+
+DEPENDENCIES:
+  - JKPacket (from `../`)
+  - SnapKit
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - RxSwift
+    - SnapKit
+
+EXTERNAL SOURCES:
+  JKPacket:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  JKPacket: b4949e737391561698c2c259a8b240b269bbdc18
+  RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
+  SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+
+PODFILE CHECKSUM: 7481151a3e8d57dc3bc95b4112293b68c7beaf5c
+
+COCOAPODS: 1.11.3

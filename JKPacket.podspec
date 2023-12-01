@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'JKPacket'
-  s.version          = '0.1.1'
+  s.version          = '0.2.0'
   s.summary          = 'a swift lifecycle reponsable observe tool'
 
 # This description is used to generate tags and improve search results.
@@ -29,8 +29,25 @@ Pod::Spec.new do |s|
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '9.0'
+  s.osx.deployment_target = '10.11'
+  s.swift_version = '4.2'
 
-  s.source_files = 'JKPacket/Classes/**/*'
+  s.subspec 'Core' do |ss|
+      ss.source_files = 'JKPacket/Classes/Core/**/*'
+  end
+  
+  s.subspec 'iOS' do |ss|
+      ss.ios.deployment_target = '9.0'
+      ss.source_files = 'JKPacket/Classes/iOS/**/*'
+      ss.dependency 'JKPacket/Core'
+  end
+  
+  s.subspec 'OSX' do |ss|
+      ss.osx.deployment_target = '10.11'
+      ss.source_files = 'JKPacket/Classes/OSX/**/*'
+      ss.dependency 'JKPacket/Core'
+  end
+#  s.source_files = 'JKPacket/Classes/**/*'
   
   # s.resource_bundles = {
   #   'JKPacket' => ['JKPacket/Assets/*.png']
